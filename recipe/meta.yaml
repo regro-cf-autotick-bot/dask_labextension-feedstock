@@ -1,4 +1,4 @@
-{% set version = "0.3.3" %}
+{% set version = "1.0.0" %}
 
 package:
   name: dask-labextension
@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/d/dask_labextension/dask_labextension-{{ version }}.tar.gz
-  sha256: c3fa82fd82a65970e5c65412762709cdbe4852c13ec71bbaff923ebc9cadaff8
+  sha256: e6fde29c9d806f4f56c1d88217455aca5557d536b3f47ec68cf7c89b734f49d3
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
@@ -25,6 +25,7 @@ requirements:
     - bokeh
     - distributed >=1.24.1
     - notebook >=4.3.1
+    - jupyter-server-proxy >=1.1.0
 
 test:
   imports:
