@@ -30,6 +30,10 @@ requirements:
 test:
   imports:
     - dask_labextension
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/dask/dask-labextension
