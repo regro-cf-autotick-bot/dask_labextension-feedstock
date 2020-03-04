@@ -1,17 +1,17 @@
-{% set version = "1.1.0" %}
+{% set version = "2.0.0" %}
 
 package:
   name: dask-labextension
-  version: "{{ version }}"
+  version: {{ version }}
 
 source:
   url: https://pypi.io/packages/source/d/dask_labextension/dask_labextension-{{ version }}.tar.gz
-  sha256: b5f60d5bed79846bd5554058276fc3d9ca5727edd9f6df75ccbebb1fecc62bcc
+  sha256: 710bac8373b15a98d96b2083941e67f07773e3f27818d122e591b24f35044b63
 
 build:
   number: 0
   noarch: python
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
@@ -30,13 +30,17 @@ requirements:
 test:
   imports:
     - dask_labextension
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/dask/dask-labextension
   license: BSD-3-clause
   license_family: BSD
   license_file: LICENSE
-  summary: "A Jupyter Notebook server extension manages Dask clusters"
+  summary: A Jupyter Notebook server extension manages Dask clusters
 
 extra:
   recipe-maintainers:
