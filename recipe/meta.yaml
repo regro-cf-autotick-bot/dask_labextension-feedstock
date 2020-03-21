@@ -1,4 +1,4 @@
-{% set version = "2.0.0" %}
+{% set version = "2.0.1" %}
 
 package:
   name: dask-labextension
@@ -6,38 +6,47 @@ package:
 
 source:
   url: https://pypi.io/packages/source/d/dask_labextension/dask_labextension-{{ version }}.tar.gz
-  sha256: 710bac8373b15a98d96b2083941e67f07773e3f27818d122e591b24f35044b63
+  sha256: 50f232b1030a32b0e1c63f48f5d74e2fc1feca1a951b81de77b7d02dc84bfda7
 
 build:
   number: 0
   noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
-requirements:
-  host:
-    - python >=3.6
-    - pip
-    # distributed and notebook are directly imported by setup.py
-    - distributed >=1.24.1
-    - notebook >=4.3.1
-  run:
-    - python >=3.6
-    - bokeh
-    - distributed >=1.24.1
-    - notebook >=4.3.1
-    - jupyter-server-proxy >=1.1.0
+outputs:
+  - name: dask-labextension
+    script: build_base.bat  # [win]
+    script: build_base.sh  # [not win]
+    requirements:
+      host:
+        - python >=3.5
+        - pip
+      run:
+        - python >=3.5
+        - bokeh <2
+        - distributed >=1.24.1
+        - jupyter-server-proxy >=1.1.0
+        - notebook >=4.3.1
+    test:
+      imports:
+        - dask_labextension
+      requires:
+        - pip
+      commands:
+        - pip check
 
-test:
-  imports:
-    - dask_labextension
-  requires:
-    - pip
-  commands:
-    - pip check
+  - name: dask_labextension
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - {{ pin_subpackage('dask-labextension', max_pin="x.x.x") }}
+    test:
+      imports:
+        - dask_labextension
 
 about:
   home: https://github.com/dask/dask-labextension
-  license: BSD-3-clause
+  license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
   summary: A Jupyter Notebook server extension manages Dask clusters

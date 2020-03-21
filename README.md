@@ -3,7 +3,7 @@ About dask-labextension
 
 Home: https://github.com/dask/dask-labextension
 
-Package license: BSD-3-clause
+Package license: BSD-3-Clause
 
 Feedstock license: BSD 3-Clause
 
@@ -30,6 +30,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-dask--labextension-green.svg)](https://anaconda.org/conda-forge/dask-labextension) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dask-labextension.svg)](https://anaconda.org/conda-forge/dask-labextension) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dask-labextension.svg)](https://anaconda.org/conda-forge/dask-labextension) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dask-labextension.svg)](https://anaconda.org/conda-forge/dask-labextension) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-dask_labextension-green.svg)](https://anaconda.org/conda-forge/dask_labextension) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dask_labextension.svg)](https://anaconda.org/conda-forge/dask_labextension) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dask_labextension.svg)](https://anaconda.org/conda-forge/dask_labextension) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dask_labextension.svg)](https://anaconda.org/conda-forge/dask_labextension) |
 
 Installing dask-labextension
 ============================
@@ -40,10 +41,10 @@ Installing `dask-labextension` from the `conda-forge` channel can be achieved by
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `dask-labextension` can be installed with:
+Once the `conda-forge` channel has been enabled, `dask-labextension, dask_labextension` can be installed with:
 
 ```
-conda install dask-labextension
+conda install dask-labextension dask_labextension
 ```
 
 It is possible to list all of the versions of `dask-labextension` available on your platform with:
