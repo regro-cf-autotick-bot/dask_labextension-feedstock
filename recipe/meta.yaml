@@ -11,33 +11,42 @@ source:
 build:
   number: 0
   noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
-requirements:
-  host:
-    - python >=3.6
-    - pip
-    # distributed and notebook are directly imported by setup.py
-    - distributed >=1.24.1
-    - notebook >=4.3.1
-  run:
-    - python >=3.6
-    - bokeh
-    - distributed >=1.24.1
-    - notebook >=4.3.1
-    - jupyter-server-proxy >=1.1.0
+outputs:
+  - name: dask-labextension
+    script: build_base.bat  # [win]
+    script: build_base.sh  # [not win]
+    requirements:
+      host:
+        - python >=3.5
+        - pip
+      run:
+        - python >=3.5
+        - bokeh <2
+        - distributed >=1.24.1
+        - jupyter-server-proxy >=1.1.0
+        - notebook >=4.3.1
+    test:
+      imports:
+        - dask_labextension
+      requires:
+        - pip
+      commands:
+        - pip check
 
-test:
-  imports:
-    - dask_labextension
-  requires:
-    - pip
-  commands:
-    - pip check
+  - name: dask_labextension
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - {{ pin_subpackage('dask-labextension', max_pin="x.x.x") }}
+    test:
+      imports:
+        - dask_labextension
 
 about:
   home: https://github.com/dask/dask-labextension
-  license: BSD-3-clause
+  license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
   summary: A Jupyter Notebook server extension manages Dask clusters
