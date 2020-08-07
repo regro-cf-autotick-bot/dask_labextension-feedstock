@@ -5,7 +5,7 @@ Home: https://github.com/dask/dask-labextension
 
 Package license: BSD-3-Clause
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: A Jupyter Notebook server extension manages Dask clusters
 
@@ -117,6 +117,7 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@jsignell](https://github.com/jsignell/)
 * [@ocefpaf](https://github.com/ocefpaf/)
 * [@xhochy](https://github.com/xhochy/)
 
