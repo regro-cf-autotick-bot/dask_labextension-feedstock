@@ -20,7 +20,7 @@ outputs:
       host:
         - python >=3.6
         - pip
-        - nodejs
+        - nodejs >=12
         - jupyter-packaging >=0.7.0,<0.8
       run:
         - python >=3.6
